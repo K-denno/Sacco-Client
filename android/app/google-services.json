@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "131002825127",
+    "firebase_url": "https://sacco-quarkus-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "sacco-quarkus",
+    "storage_bucket": "sacco-quarkus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:131002825127:android:50b4c97e02f6b649301e82",
+        "android_client_info": {
+          "package_name": "com.saccoFE.quarkus"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "131002825127-flqudrjrfdmmvmhbkbflr3sil8fub3ho.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.saccoFE.quarkus",
+            "certificate_hash": "4b9bb158def20726730cbcd92061625c5eeea419"
+          }
+        },
+        {
+          "client_id": "131002825127-k4b7r1l5ivnf2qe4topnaap04pm43vph.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuCbQqWdVNY1XDhwENRkRu_v_0C9g00NU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "131002825127-k4b7r1l5ivnf2qe4topnaap04pm43vph.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
