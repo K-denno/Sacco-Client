@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sacco/Login_ui.dart';
@@ -6,13 +7,13 @@ import 'package:sacco/splashScreen.dart' as splash;
 import 'package:sacco/Sign_ui.dart' as signIn;
 import 'Sign_ui.dart';
 
-// void main() {
-//   runApp( new MaterialApp(
-//     // home: splash.MyApp()
-//     // home: signIn.SignIn()
-//     home: Login(),
-//   ));
-// }
+void main() {
+  runApp( new MaterialApp(
+    // home: splash.MyApp()
+    // home: signIn.SignIn()
+    home: MyHomePage(),
+  ));
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -34,8 +35,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: new WidgetUtils(context).showAppBar(),
       drawer: new WidgetUtils(context).showDrawer(),

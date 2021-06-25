@@ -1,30 +1,19 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:sacco/Login_ui.dart';
 import 'package:sacco/WidgetUtils.dart';
+import 'package:sacco/splashScreen.dart' as splash;
+import 'package:sacco/Sign_ui.dart' as signIn;
+import 'Sign_ui.dart';
 
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ProfilePage(),
-      theme: ThemeData(
-        primaryColor: Color.fromARGB(255, 20, 0, 100),
-      )
-    );
-  }
-}
-
-class ProfilePage extends StatefulWidget {
+class ChangePassword extends StatefulWidget {
 
   @override
-  _ProfilePagState createState() => _ProfilePagState();
+  _ChangePasswordState createState() => _ChangePasswordState();
 }
 
-class _ProfilePagState extends State<ProfilePage> {
-
-
+class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +32,7 @@ class _ProfilePagState extends State<ProfilePage> {
             SizedBox(width:20, height: 20),
             Center(
               child:  Text(
-                  "WORK IN PROGRESS",
+                  "CHANGE PASSOWRD UI",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 20,
@@ -57,4 +46,3 @@ class _ProfilePagState extends State<ProfilePage> {
     );
   }
 }
-

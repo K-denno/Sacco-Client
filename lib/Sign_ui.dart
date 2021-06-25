@@ -23,12 +23,9 @@ class _LoginState extends State<SignIn> {
 
   @override
   Widget build(BuildContext context) {
-    // if (this._isLoading) {
-    //   return new WidgetUtils(context).spinKitWave(context);
-    // };
     return Scaffold(
       primary: false,
-      // resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomPadding: true,
       // backgroundColor: Color.fromARGB(255, 20, 0, 100),
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -177,9 +174,9 @@ class _LoginState extends State<SignIn> {
                           if(_globalKey.currentState.validate()) {
                             SignUp userSignUp =
                               SignUp(
-                                FormControllers.usernameconroller.text,
-                                FormControllers.emailcontroller.text,
-                                FormControllers.passwordcontroller.text,
+                                FormControllers.usernameconroller.text.trim(),
+                                FormControllers.emailcontroller.text.trim(),
+                                FormControllers.passwordcontroller.text.trim(),
                                 3.0 == timeDilation);
                                 this._handleSubmit(context, userSignUp);
                             print(
@@ -201,31 +198,15 @@ class _LoginState extends State<SignIn> {
                           ],
                         ),
                       ),
-                      SignInButton(
-                        Buttons.Google,
-                        onPressed: () {
-
-                        },
-                      ),
+                      // SignInButton(
+                      //   Buttons.Google,
+                      //   onPressed: () {
+                      //     _handleSignInWithGoogle(context);
+                      //   },
+                      // ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget> [
-                           SignInButton(
-                            Buttons.Facebook,
-                            mini: true,
-                            onPressed: () {},
-                          ),
-                           SignInButton(
-                            Buttons.GitHub,
-                            mini: true,
-                            onPressed: () {},
-                          ),
-                           SignInButton(
-                            Buttons.Twitter,
-                            mini: true,
-                            onPressed: () {},
-                          )
-                        ]
+                        children: <Widget> [ ]
                       )
                   ]
                 ))
@@ -269,12 +250,18 @@ class _LoginState extends State<SignIn> {
   }
 
   Future<void> _handleSubmit(BuildContext context, SignUp userSignUp) async {
+     setState(() {
+        this._isLoading = true;
+      });
     try {
       new WidgetUtils(context).showLoadingDialog(context);
       UserCredential userCredential = await userSignUp.saveUser();
        Navigator.of(context).pushReplacement(
           new MaterialPageRoute(builder:
               (BuildContext context) => main.MyApp()));
+      setState(() {
+        this._isLoading = false;
+      });
     } on FirebaseAuthException catch (result) {
       if (result.code == 'weak-password') {
           new WidgetUtils(context).showErrorDialog(context,
@@ -283,6 +270,28 @@ class _LoginState extends State<SignIn> {
             new WidgetUtils(context).showErrorDialog(context,
               "An account with that email already exists.");
         }
+    } catch (e) {
+        print(e);
+    }
+  }
+
+  Future<void> _handleSignInWithGoogle(BuildContext context) async {
+    print("gets here");
+    try {
+      new WidgetUtils(context).showLoadingDialog(context);
+      UserCredential userCredential = await FirebaseUtils.sgnInWithGoogle();
+       Navigator.of(context).pushReplacement(
+          new MaterialPageRoute(builder:
+              (BuildContext context) => main.MyApp()));
+    } on FirebaseAuthException catch (result) {
+      print(result);
+      // if (result.code == 'weak-password') {
+      //     new WidgetUtils(context).showErrorDialog(context,
+      //       "The password provided is too weak.");
+      //   } else if (result.code == 'email-already-in-use') {
+      //       new WidgetUtils(context).showErrorDialog(context,
+      //         "An account with that email already exists.");
+      //   }
     } catch (e) {
         print(e);
     }

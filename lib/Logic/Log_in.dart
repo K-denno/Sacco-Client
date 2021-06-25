@@ -16,7 +16,7 @@ class Log_in {
     this.password = pass;
   }
 
-  loginUser() async {
+  loginUserWithEmailAndPassword() async {
      UserCredential userCredential =
         await FirebaseUtils.getFirebaseInstance().signInWithEmailAndPassword(
         email: this.email,

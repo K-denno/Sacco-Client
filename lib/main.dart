@@ -13,20 +13,23 @@ import 'package:sacco/WidgetUtils.dart';
 import 'package:sacco/HomePage.dart' as mainPage;
 import 'package:sacco/splashScreen.dart' as splash;
 import 'Login_ui.dart' as login;
+import 'package:flutter_config/flutter_config.dart';
 
 
-void main() {
-  FirebaseAnalytics analytics = FirebaseAnalytics();
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp( new MaterialApp(
-    // home: splash.MyApp()
-    // home: signIn.SignIn()
-    home: MainApp(),
-    navigatorObservers: [
-      FirebaseAnalyticsObserver(analytics: analytics),
-    ],
-  ));
-}
+
+// void main() async {
+//   FirebaseAnalytics analytics = FirebaseAnalytics();
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await FlutterConfig.loadEnvVariables();
+//   runApp( new MaterialApp(
+//     // home: splash.MyApp()
+//     // home: signIn.SignIn()
+//     home: MainApp(),
+//     navigatorObservers: [
+//       // FirebaseAnalyticsObserver(analytics: analytics),
+//     ],
+//   ));
+// }
 
 class MainApp extends StatefulWidget {
   _AppState createState() => _AppState();

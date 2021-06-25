@@ -8,6 +8,7 @@ class FormControllers{
   static TextEditingController guaranter2 = new TextEditingController();
   static TextEditingController guaranter3 = new TextEditingController();
   static TextEditingController passwordcontroller = new TextEditingController();
+  static TextEditingController changePasswordcontroller = new TextEditingController();
   static TextEditingController firstnamecontroller = new TextEditingController();
   static TextEditingController lastnamecontroller = new TextEditingController();
   static TextEditingController emailcontroller = new TextEditingController();

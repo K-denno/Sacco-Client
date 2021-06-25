@@ -19,9 +19,13 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _globalKey = GlobalKey<FormState>();
   final GlobalKey<State> _keyLoader = new GlobalKey<State>();
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
+    if (this._isLoading) {
+      return new WidgetUtils(context).spinKitWave(context);
+    }
     return Scaffold(
       primary: false,
       resizeToAvoidBottomPadding: true,
@@ -134,8 +138,8 @@ class _LoginState extends State<Login> {
                           if(_globalKey.currentState.validate()) {
 
                             Log_in loginUser = new Log_in(
-                              FormControllers.emailcontroller.text,
-                              FormControllers.passwordcontroller.text
+                              FormControllers.emailcontroller.text.trim(),
+                              FormControllers.passwordcontroller.text.trim()
                             );
                             this._handleSubmit(context, loginUser);
                             print(
@@ -157,31 +161,26 @@ class _LoginState extends State<Login> {
                           ],
                         ),
                       ),
-                      SignInButton(
-                        Buttons.Google,
-                        onPressed: () {},
-                        text: "Log in With Google",
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget> [
-                           SignInButton(
-                            Buttons.Facebook,
-                            mini: true,
-                            onPressed: () {},
-                          ),
-                           SignInButton(
-                            Buttons.GitHub,
-                            mini: true,
-                            onPressed: () {},
-                          ),
-                           SignInButton(
-                            Buttons.Twitter,
-                            mini: true,
-                            onPressed: () {},
-                          )
-                        ]
-                      )
+                      // SignInButton(
+                      //   Buttons.Google,
+                      //   onPressed: () {},
+                      //   text: "Log in With Google",
+                      // ),
+                      // Row(
+                      //   mainAxisAlignment: MainAxisAlignment.center,
+                      //   children: <Widget> [
+                      //      SignInButton(
+                      //       Buttons.GitHub,
+                      //       mini: true,
+                      //       onPressed: () {},
+                      //     ),
+                      //      SignInButton(
+                      //       Buttons.Twitter,
+                      //       mini: true,
+                      //       onPressed: () {},
+                      //     )
+                      //   ]
+                      // )
                   ]
                 ))
               ),
@@ -224,12 +223,18 @@ class _LoginState extends State<Login> {
   }
 
     Future<void> _handleSubmit(BuildContext context, Log_in userLogin) async {
+      setState(() {
+        this._isLoading = true;
+      });
     try {
-      new WidgetUtils(context).showLoadingDialog(context);
-      UserCredential userCredential = await userLogin.loginUser();
+      // new WidgetUtils(context).showLoadingDialog(context);
+      UserCredential userCredential = await userLogin.loginUserWithEmailAndPassword();
        Navigator.of(context).pushReplacement(
           new MaterialPageRoute(builder:
             (BuildContext context) => main.MyApp()));
+      setState(() {
+        this._isLoading = false;
+      });
     } on FirebaseAuthException catch (result) {
       if (result.code == 'user-not-found') {
           new WidgetUtils(context).showErrorDialog(context,

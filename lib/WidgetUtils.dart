@@ -8,6 +8,7 @@ import 'package:sacco/profile_ui.dart';
 import 'HomePage.dart' as main;
 import 'Login_ui.dart' as login;
 import 'reports_ui.dart' as reports;
+import 'changePasswordUI.dart' as changePassword;
 import 'profile_ui.dart' as prof;
 import 'package:select_form_field/select_form_field.dart' as selectBox;
 import 'package:flutter_spinkit/flutter_spinkit.dart' as spinkit;
@@ -55,7 +56,11 @@ class WidgetUtils {
 
             ListTile(
               title: Text("Change Password"),
-              onTap: () {}
+              onTap: () {
+                Navigator.of(context)
+                  .pushReplacement(MaterialPageRoute(builder:
+                    (context) => changePassword.ChangePassword()));
+              }
             ),
 
             ListTile(

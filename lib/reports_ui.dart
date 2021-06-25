@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: MyHomePage(),
       theme: ThemeData(
-        primaryColor: Color(0xFF34495E),
+        primaryColor: Color.fromARGB(255, 20, 0, 100),
       )
     );
   }
